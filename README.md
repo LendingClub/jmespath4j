@@ -20,14 +20,14 @@ Add the jmespath4j provider module that you would like to use from the table abo
 <dependency>
     <groupId>io.macgyver.jmespath4j</groupId>
     <artifactId>jmespath4j-burt</artifactId>
-    <version>1.0</version>
+    <version>1.0.0</version>
 </dependency>
 ```
 
 or, with gradle:
 
 ```groovy
-compile "io.macgyver.jmespath4j:jmespath4j-burt:1.0"
+compile "io.macgyver.jmespath4j:jmespath4j-burt:1.0.0"
 ```
 
 ## Usage
