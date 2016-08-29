@@ -1,6 +1,4 @@
 machine:
-    services:
-        - neo4j
     java:
         version: oraclejdk8
     environment:
