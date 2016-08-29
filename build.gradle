@@ -30,7 +30,7 @@ subprojects {
     apply plugin: 'eclipse'
     
     group 'io.macgyver.jmespath4j'
-    version = "1.0.0"
+    version = "${JMESPATH4J_VERSION}"
     
     dependencies {
 
