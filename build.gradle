@@ -2,7 +2,6 @@
 apply plugin: 'eclipse'
 apply plugin: 'java'
 
-
 repositories {
     mavenLocal()
     mavenCentral()
@@ -10,20 +9,29 @@ repositories {
 }
 
 
+group 'io.macgyver.jmespath4j'
 
 task wrapper(type: Wrapper) {
     gradleVersion = '3.0'
 }
 
+
+
+
 subprojects {
 
+
+
+    
     apply plugin: 'java'
     apply plugin: 'maven'
     apply plugin: 'eclipse'
+
     
     group 'io.macgyver.jmespath4j'
     version = "${JMESPATH4J_VERSION}"
     
+
     
     repositories {
         mavenLocal()
@@ -36,4 +44,67 @@ subprojects {
         testCompile "junit:junit:${JUNIT_VERSION}"
         testCompile "org.assertj:assertj-core:${ASSERTJ_VERSION}"
     }
+
+    task sourcesJar(type: Jar, dependsOn: classes) {
+        classifier = 'sources'
+        from sourceSets.main.allSource
+    }
+
+	task javadoc(type:Javadoc, overwrite:true) {
+		// needed because of vaadin's habit of keeping source in jars
+	}
+		
+    task javadocJar(type: Jar, dependsOn: javadoc) {
+        classifier = 'javadoc'
+        from javadoc.destinationDir
+		
+    }    
+	artifacts {
+	        archives sourcesJar, javadocJar, jar	
+	}
+    
+	uploadArchives {
+	    repositories {
+			
+	        mavenDeployer {
+	            //name = 'macgyver-bintray'
+				if (!project.hasProperty('BINRAY_USER')) {
+					project.ext['BINTRAY_USER']=System.getenv("BINTRAY_USER")
+				}
+				if (!project.hasProperty('BINTRAY_KEY')) {
+					project.ext['BINTRAY_KEY'] = System.getenv("BINTRAY_KEY")
+				}
+			
+           repository(id: 'macgyver-bintray', url: 'https://api.bintray.com/maven/robschoening/io-macgyver/jmespath4j'){
+	                authentication(userName: BINTRAY_USER, password: BINTRAY_KEY)
+				}
+                //pom.setPackaging('jar')
+                pom.project {
+                    
+                    licenses {
+                        license {
+                            name 'The Apache Software License, Version 2.0'
+                            url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                        }
+                    }
+					scm {
+						connection 'scm:git:git@github.com:LendingClub/jmespath4j.git'
+						developerConnection 'scm:git:git@github.com:LendingClub/jmespath4j.git'
+						url 'git@github.com:LendingClub/jmespath4j.git'
+					}
+	            	developers {
+						developer {
+							name 'Rob Schoening'
+							email 'robschoening@gmail.com'
+						}
+					}
+                
+                }
+	        }
+	    }
+	}
+    
 }
+
+
+
