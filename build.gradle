@@ -12,7 +12,7 @@ repositories {
 group 'io.macgyver.jmespath4j'
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '3.0'
+    gradleVersion = '3.2.1'
 }
 
 
@@ -50,34 +50,34 @@ subprojects {
         from sourceSets.main.allSource
     }
 
-	task javadoc(type:Javadoc, overwrite:true) {
-		// needed because of vaadin's habit of keeping source in jars
-	}
-		
+    task javadoc(type:Javadoc, overwrite:true) {
+        // needed because of vaadin's habit of keeping source in jars
+    }
+        
     task javadocJar(type: Jar, dependsOn: javadoc) {
         classifier = 'javadoc'
         from javadoc.destinationDir
-		
+        
     }    
-	artifacts {
-	        archives sourcesJar, javadocJar, jar	
-	}
+    artifacts {
+            archives sourcesJar, javadocJar, jar    
+    }
     
-	uploadArchives {
-	    repositories {
-			
-	        mavenDeployer {
-	            //name = 'macgyver-bintray'
-				if (!project.hasProperty('BINRAY_USER')) {
-					project.ext['BINTRAY_USER']=System.getenv("BINTRAY_USER")
-				}
-				if (!project.hasProperty('BINTRAY_KEY')) {
-					project.ext['BINTRAY_KEY'] = System.getenv("BINTRAY_KEY")
-				}
-			
+    uploadArchives {
+        repositories {
+            
+            mavenDeployer {
+                //name = 'macgyver-bintray'
+                if (!project.hasProperty('BINRAY_USER')) {
+                    project.ext['BINTRAY_USER']=System.getenv("BINTRAY_USER")
+                }
+                if (!project.hasProperty('BINTRAY_KEY')) {
+                    project.ext['BINTRAY_KEY'] = System.getenv("BINTRAY_KEY")
+                }
+            
            repository(id: 'macgyver-bintray', url: 'https://api.bintray.com/maven/robschoening/io-macgyver/jmespath4j'){
-	                authentication(userName: BINTRAY_USER, password: BINTRAY_KEY)
-				}
+                    authentication(userName: BINTRAY_USER, password: BINTRAY_KEY)
+                }
                 //pom.setPackaging('jar')
                 pom.project {
                     
@@ -87,22 +87,22 @@ subprojects {
                             url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
                         }
                     }
-					scm {
-						connection 'scm:git:git@github.com:LendingClub/jmespath4j.git'
-						developerConnection 'scm:git:git@github.com:LendingClub/jmespath4j.git'
-						url 'git@github.com:LendingClub/jmespath4j.git'
-					}
-	            	developers {
-						developer {
-							name 'Rob Schoening'
-							email 'robschoening@gmail.com'
-						}
-					}
+                    scm {
+                        connection 'scm:git:git@github.com:LendingClub/jmespath4j.git'
+                        developerConnection 'scm:git:git@github.com:LendingClub/jmespath4j.git'
+                        url 'git@github.com:LendingClub/jmespath4j.git'
+                    }
+                    developers {
+                        developer {
+                            name 'Rob Schoening'
+                            email 'robschoening@gmail.com'
+                        }
+                    }
                 
                 }
-	        }
-	    }
-	}
+            }
+        }
+    }
     
 }
 
