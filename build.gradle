@@ -80,7 +80,9 @@ subprojects {
                 }
                 //pom.setPackaging('jar')
                 pom.project {
-                    
+                    name "${project.name}"
+                    description "${project.name}"
+                    url 'https://github.com/LendingClub/jmespath4j'
                     licenses {
                         license {
                             name 'The Apache Software License, Version 2.0'
