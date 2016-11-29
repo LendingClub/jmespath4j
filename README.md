@@ -1,5 +1,7 @@
 # jmespath4j
 
+[![CircleCI](https://circleci.com/gh/LendingClub/jmespath4j.svg?style=svg)](https://circleci.com/gh/LendingClub/jmespath4j)
+
 [JMESPath](http://jmespath.org/) is a fantastic expression language for JSON.  Oddly enough, a fully compliant java implementation has been slow to arrive.
 
 jmespath4j is not a jmespath implementation, but rather a simple API that isolates applications from the underlying implementation.
