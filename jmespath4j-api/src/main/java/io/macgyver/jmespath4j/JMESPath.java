@@ -55,6 +55,9 @@ public class JMESPath {
 		}
 	}
 
+	public static JMESPathExpression compile(String expression) {
+		return getGlobalEngine().compile(expression);
+	}
 	public static JsonNode eval(String expression, JsonNode n) {
 		if (n == null) {
 			return NullNode.getInstance();
