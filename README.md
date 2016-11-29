@@ -1,6 +1,7 @@
 # jmespath4j
 
 [![CircleCI](https://circleci.com/gh/LendingClub/jmespath4j.svg?style=svg)](https://circleci.com/gh/LendingClub/jmespath4j)
+[ ![Download](https://api.bintray.com/packages/robschoening/io-macgyver/jmespath4j/images/download.svg) ](https://bintray.com/robschoening/io-macgyver/jmespath4j/_latestVersion)
 
 [JMESPath](http://jmespath.org/) is a fantastic expression language for JSON.  Oddly enough, a fully compliant java implementation has been slow to arrive.
 
