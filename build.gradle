@@ -12,7 +12,7 @@ repositories {
 group 'io.macgyver.jmespath4j'
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '3.2.1'
+    gradleVersion = '3.3'
 }
 
 
@@ -75,7 +75,7 @@ subprojects {
                     project.ext['BINTRAY_KEY'] = System.getenv("BINTRAY_KEY")
                 }
             
-           repository(id: 'macgyver-bintray', url: 'https://api.bintray.com/maven/robschoening/io-macgyver/jmespath4j'){
+           repository(id: 'macgyver-bintray', url: 'https://api.bintray.com/maven/lendingcluib/OSS/jmespath4j'){
                     authentication(userName: BINTRAY_USER, password: BINTRAY_KEY)
                 }
                 //pom.setPackaging('jar')
