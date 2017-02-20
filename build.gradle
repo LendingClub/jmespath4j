@@ -75,7 +75,7 @@ subprojects {
                     project.ext['BINTRAY_KEY'] = System.getenv("BINTRAY_KEY")
                 }
             
-           repository(id: 'macgyver-bintray', url: 'https://api.bintray.com/maven/lendingcluib/OSS/jmespath4j'){
+           repository(id: 'macgyver-bintray', url: 'https://api.bintray.com/maven/lendingclub/OSS/jmespath4j'){
                     authentication(userName: BINTRAY_USER, password: BINTRAY_KEY)
                 }
                 //pom.setPackaging('jar')
